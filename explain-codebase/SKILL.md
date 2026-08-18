@@ -17,7 +17,8 @@ gain context without re-exploring the tree each time.
 
 ## Steps
 
-1. **Gather structure with native tools.** Run `scripts/survey.sh [dir]`. It uses
+1. **Gather structure with native tools.** Run `scripts/survey.sh [dir]` (or
+   `scripts/survey.ps1 [dir]` on Windows PowerShell). It uses
    the best tools the OS/shell already has — `git ls-files`/`fd`/`find` for
    listing, `rg`/`grep` for search, `tree` for layout — to report the layout,
    manifests, CI/tooling, language mix, entry-point candidates, and test
@@ -75,3 +76,13 @@ gain context without re-exploring the tree each time.
   tools. Prefers `git ls-files`→`fd`→`find` for listing, `rg`→`grep` for search,
   and `tree` for layout, degrading gracefully when a tool is absent. Run it in
   step 1 before reading any files.
+- `scripts/survey.ps1 [dir]` — PowerShell port of the above for native Windows,
+  using `git ls-files`→`fd`→`Get-ChildItem` for listing and `rg`→`Select-String`
+  for search.
+
+### Platform note
+
+`survey.sh` targets any POSIX shell and runs the same under bash/zsh/fish (it is
+executed via its `bash` shebang, not sourced), so no zsh/fish variant is needed.
+On **Windows**, use `survey.ps1`, or run `survey.sh` under Git Bash or WSL (both
+provide `bash`, `find`, and `grep`).
