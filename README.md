@@ -1,4 +1,4 @@
-# AILike: Universal Skills
+# br AI n: Universal Skills
 
 A collection of **portable skills** for LLM CLIs — Claude Code, Gemini CLI,
 GitHub Copilot, and others. Each skill is tool-agnostic: plain-language
